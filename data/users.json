@@ -2,7 +2,7 @@
     {
         "organisation": "My gym",
         "state": "France",
-        "city": "Toulouse",
+        "city": ["Toulouse"],
         "server": "http://192.168.2.176/gymPlan/"
     }
 ]
