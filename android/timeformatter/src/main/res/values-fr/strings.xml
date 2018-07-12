@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TimeFormatter</string>
+
+    <string name="millisecond">milliseconde</string>
+    <string name="milliseconds">millisecondes</string>
+    <string name="millisecond_min">ms</string>
+
+    <string name="second">seconde</string>
+    <string name="seconds">secondes</string>
+    <string name="second_min">sec</string>
+
+    <string name="minute">minute</string>
+    <string name="minutes">minutes</string>
+    <string name="minute_min">min</string>
+
+    <string name="hour">heure</string>
+    <string name="hours">heures</string>
+    <string name="hour_min">h</string>
+
+    <string name="day">jour</string>
+    <string name="days">jours</string>
+
+    <string name="month">mois</string>
+    <string name="months">mois</string>
+
+    <string name="year">an</string>
+    <string name="years">ans</string>
+</resources>

@@ -5,4 +5,11 @@
 
     <dimen name="dimen_16">16dp</dimen>
     <dimen name="dimen_8">8dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+
+    <dimen name="list_start_margin">72dp</dimen>
+    <dimen name="list_item_single_height">48dp</dimen>
 </resources>

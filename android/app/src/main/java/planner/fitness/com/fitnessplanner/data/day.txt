@@ -1,0 +1,9 @@
+This file explain the data architecture of the day plan item which is a json
+
+{
+    "id": long // the id of the day plan if exists in the data base of the api
+    "date": int, // as AAAAMMDD
+    "schedules": [
+
+    ]
+}

@@ -1,0 +1,9 @@
+This file define the data architecture of the schedule item
+
+{
+    "id": long, // the id of the schedule item
+    "idConcept" : long, // the id of the concept
+    "place": str, // the place name of the schedule
+    "time": long, // the date time in millis when start the schedule
+    "duration": long, // the duration in millis
+}

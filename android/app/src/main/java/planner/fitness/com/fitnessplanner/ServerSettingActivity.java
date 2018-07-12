@@ -1,24 +1,33 @@
 package planner.fitness.com.fitnessplanner;
 
-import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.AsyncTaskLoader;
+import android.support.v4.content.Loader;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.util.ArrayList;
+
+import planner.fitness.com.fitnessplanner.data.FPOrganisation;
 import planner.fitness.com.fitnessplanner.network.URLReader;
 
-public class ServerSettingActivity extends AppCompatActivity {
+public class ServerSettingActivity extends AppCompatActivity implements View.OnClickListener, LoaderManager.LoaderCallbacks<String> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_server_setting);
 
-        DownloadUsersDataTask task = new DownloadUsersDataTask();
-
+        getSupportLoaderManager().initLoader(DownloadUsersDataLoader.LOADER_ID, null, this);
         showProgress(true);
-        task.execute(getString(R.string.users_url));
     }
 
     private void showProgress(boolean show) {
@@ -32,47 +41,73 @@ public class ServerSettingActivity extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    public void onClick(View view) {
+
+    }
+
+    @NonNull
+    @Override
+    public Loader<String> onCreateLoader(int id, @Nullable Bundle args) {
+        return new DownloadUsersDataLoader(this, getString(R.string.users_url));
+    }
+
+    @Override
+    public void onLoadFinished(@NonNull Loader loader, String data) {
+        showProgress(false);
+
+        ArrayList<FPOrganisation> organisations = new ArrayList<>();
+        try {
+            JSONArray array = new JSONArray(data);
+            int length = array.length();
+            for (int i = 0; i < length; i++) {
+                organisations.add(FPOrganisation.createOrganisation(array.getJSONObject(i)));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Log.i("SERVER", "onLoadFinished: " + data);
+    }
+
+    @Override
+    public void onLoaderReset(@NonNull Loader loader) {
+
+    }
+
+
     /**
      * Represents an asynchronous task used to download users.json data
      */
-    public class DownloadUsersDataTask extends AsyncTask<String, Void, Boolean> {
+    static class DownloadUsersDataLoader extends AsyncTaskLoader<String> {
 
-        private String json;
+        static final int LOADER_ID = 0;
 
-        DownloadUsersDataTask() {
-            json = "[]";
-        }
+        private String mUrl;
 
-        /**
-         * Download the content of the file
-         * @param params
-         * @return
-         */
-        @Override
-        protected Boolean doInBackground(String... params) {
-            json = URLReader.read(params[0]);
+        DownloadUsersDataLoader(@NonNull Context context, String url) {
+            super(context);
 
-            return true;
+            mUrl = url;
+
+            onContentChanged();
         }
 
         @Override
-        protected void onPostExecute(final Boolean success) {
-            showProgress(false);
-            ((TextView) findViewById(R.id.text_view)).setText(json);
+        protected void onStartLoading() {
+            if (takeContentChanged()) forceLoad();
         }
 
         @Override
-        protected void onCancelled() {
-            json = "[]";
-            showProgress(false);
+        protected void onReset() {
+            super.onReset();
+            onStopLoading();
         }
 
-        /**
-         * get the json content downloaded
-         * @return the json content
-         */
-        public String getJson() {
-            return json;
+        @Nullable
+        @Override
+        public String loadInBackground() {
+            String json = URLReader.read(mUrl);
+            return json == null ? "[]" : json;
         }
     }
 }

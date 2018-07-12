@@ -3,6 +3,7 @@ package planner.fitness.com.fitnessplanner;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatDelegate;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -11,11 +12,14 @@ public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+
         setContentView(R.layout.activity_splash_screen);
 
         boolean verifiedIdentity = false;
 
-        if (!SplashScreen.LOGIN_RUN && !verifiedIdentity) {
+        if (!SplashScreen.LOGIN_RUN && !verifiedIdentity && true) {
             SplashScreen.LOGIN_RUN = true;
 
             Intent intent = new Intent(this, LoginActivity.class);
@@ -23,6 +27,8 @@ public class SplashScreen extends AppCompatActivity {
             startActivity(intent);
         } else {
             // TODO: customize the view
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         }
     }
 

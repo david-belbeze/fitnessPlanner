@@ -3,4 +3,9 @@
     <color name="colorPrimary">#F5F5F5</color>
     <color name="colorPrimaryDark">#E0E0E0</color>
     <color name="colorAccent">#009688</color>
+
+    <color name="colorBackgroundLight">#FAFAFA</color>
+    <color name="colorBackgroundLightCardView">#E7E7E7</color>
+
+    <color name="colorDivider">#19000000</color>
 </resources>

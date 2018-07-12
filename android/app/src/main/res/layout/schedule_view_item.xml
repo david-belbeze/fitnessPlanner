@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/cardview_light_background"
+        app:cardCornerRadius="@dimen/cardview_default_radius"
+        app:cardElevation="@dimen/cardview_default_elevation"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <planner.fitness.com.fitnessplanner.view.ImageViewRatio
+                    android:id="@+id/ftpl_image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/white"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/city"
+                    app:ratio="16:9" />
+
+                <TextView
+                    android:id="@+id/ftpl_text_view_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/ftpl_image_view"
+                    android:padding="@dimen/dimen_16"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:text="Name"
+                    android:textColor="@android:color/white"
+                    style="@style/TextAppearance.AppCompat.Display1" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dimen_8"
+                android:paddingRight="@dimen/dimen_16"
+                android:paddingBottom="@dimen/dimen_16"
+                android:paddingTop="24dp"
+                app:columnCount="4"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dimen_8"
+                    android:tint="@android:color/secondary_text_light"
+                    android:background="?android:selectableItemBackground"
+                    app:srcCompat="@drawable/ic_timer"
+                    android:tooltipText="@string/schedule"
+                    />
+
+                <TextView
+                    android:id="@+id/ftpl_text_view_time"
+                    android:text="16:30 PM"
+                    android:layout_width="0dp"
+                    android:gravity="fill"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:layout_marginLeft="@dimen/dimen_8"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="center_vertical"
+                    style="@style/TextAppearance.AppCompat.Body1" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dimen_8"
+                    android:tint="@android:color/secondary_text_light"
+                    android:background="?android:selectableItemBackground"
+                    android:tooltipText="@string/location"
+                    app:srcCompat="@drawable/ic_location"
+                    />
+
+                <TextView
+                    android:id="@+id/ftpl_text_view_location"
+                    android:text="Extasis"
+                    android:layout_width="0dp"
+                    android:gravity="fill"
+                    android:layout_marginLeft="@dimen/dimen_8"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="center_vertical"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dimen_8"
+                    android:tint="@android:color/secondary_text_light"
+                    android:background="?android:selectableItemBackground"
+                    android:tooltipText="@string/duration"
+                    app:srcCompat="@drawable/ic_update"
+                    />
+
+                <TextView
+                    android:id="@+id/ftpl_text_view_duration"
+                    android:text="40 min"
+                    android:layout_width="0dp"
+                    android:gravity="fill"
+                    android:layout_marginLeft="@dimen/dimen_8"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="center_vertical"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
+            </android.support.v7.widget.GridLayout>
+
+            <android.support.v7.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/book"
+                android:layout_gravity="end"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</RelativeLayout>
