@@ -5,7 +5,7 @@ To inscribe yout gym you must add to the file /data/users.json a json object lik
 {
     "organisation": "your gym/group name",
     "state": "the name of the country",
-    "city": "the name of your city",
+    "city": ["gym name in city 1", "gym name in city 2", ...],
     "server": "the web server to join url as http protocol"
 }
 ```
